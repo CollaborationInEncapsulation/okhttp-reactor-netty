@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+group 'io.projectreactor.okhttp'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+ext {
+    okhttpVersion = '3.12.0'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.projectreactor:reactor-bom:Californium-BUILD-SNAPSHOT"
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile 'io.projectreactor.netty:reactor-netty'
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+}
